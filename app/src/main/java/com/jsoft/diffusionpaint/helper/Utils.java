@@ -69,7 +69,7 @@ public class Utils {
     }
 
     public static String jpg2Base64String(Bitmap bm) {
-        return bitmap2Base64String(bm, Bitmap.CompressFormat.JPEG, 90);
+        return bitmap2Base64String(bm, Bitmap.CompressFormat.JPEG, 100);
     }
 
     public static String png2Base64String(Bitmap bm) {
@@ -145,8 +145,8 @@ public class Utils {
         try {
             // Create a file output stream to write the bitmap data to the file.
             FileOutputStream fos = new FileOutputStream(file);
-            // Compress the bitmap as a JPEG with 90% quality and write it to the file output stream.
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 90, fos);
+            // Compress the bitmap as a JPEG with 100% quality and write it to the file output stream.
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
             // Flush and close the file output stream.
             fos.flush();
             fos.close();

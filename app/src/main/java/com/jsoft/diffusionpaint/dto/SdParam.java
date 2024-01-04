@@ -14,6 +14,9 @@ public class SdParam {
     public int inpaintPartial = 0;
     public int sdSize;
     public int clipSkip;
+    public String asapi;
+    public boolean hr;
+    public double hrs;
     public String model;
     public String sampler;
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Stable Diffusion Sketch</string>
+    <string name="app_name">SD Sketch modify</string>
     <!-- Strings used for fragments for navigation -->
     <string name="add_paint">Add Paint</string>
     <string name="title_activity_drawing">DrawingActivity</string>
@@ -30,6 +30,60 @@
     <string name="no_recent_immages">No recent images</string>
     <string name="app_not_configured_title">App not configured</string>
     <string name="app_not_configured_message">Before using the app you have to configure Automatic1111 server address.</string>
+
+    <string name="SD_Settings">SD Settings</string>
+    <string name="mi_sd_server_address">Stable Diffusion Server Address</string>
+    <string name="mi_sd_output_dim">Stable Diffusion Output Dimension</string>
+    <string name="mi_canvas_dim">Canvas Dimension</string>
+    <string name="mi_steps">Default Steps</string>
+    <string name="mi_cfg_scale">Default CFG Scale</string>
+    <string name="mi_sd_sampler">Sampling method</string>
+    <string name="mi_clip_skip">Clip skip</string>
+    <string name="mi_sd_upscaler">Upscaler</string>
+    <string name="mi_sd_refresh_loras">Refresh Loras</string>
+    <string name="mi_sd_refresh_ckpt">Refresh Checkpoints</string>
+    <string name="Prompt_Settings">Prompt Settings</string>
+    <string name="mi_prompt_prefix">Prompt prefix</string>
+    <string name="mi_prompt_postfix">Prompt postfix</string>
+    <string name="mi_negative_prompt">Negative prompt</string>
+    <string name="mi_autocomplete_phrases">Auto-complete Phrases</string>
+    <string name="Model_Settings">Model Settings</string>
+    <string name="mi_sd_model">Stable Diffusion model</string>
+    <string name="mi_sd_inpaint_model">Stable Diffusion inpaint model</string>
+    <string name="mi_sdxl_base_model">SDXL Base model</string>
+    <string name="mi_sdxl_refine_model">SDXL Refiner model</string>
+    <string name="mi_sdxl_turbo_model">SDXL Turbo model</string>
+    <string name="ControlNet_models">">ControlNet Models"></string>
+    <string name="mi_cn_scribble">ControlNet Scribble model</string>
+    <string name="mi_cn_depth">ControlNet Depth model</string>
+    <string name="mi_cn_pose">ControlNet Pose model</string>
+    <string name="mi_cn_canny">ControlNet Canny model</string>
+    <string name="mi_cn_normal">ControlNet Normal model</string>
+    <string name="mi_cn_mlsd">ControlNet MLSD model</string>
+    <string name="mi_cn_lineart">ControlNet Lineart model</string>
+    <string name="mi_cn_softedge">ControlNet Softedge model</string>
+    <string name="mi_cn_seg">ControlNet Seg model</string>
+    <string name="mi_cn_tile">ControlNet Tile model</string>
+    <string name="mi_cn_ipadapter">ControlNet IP-Adapter model</string>
+    <string name="mi_cnxl_ipadapter">ControlNet IP-Adapter XL model</string>
+    <string name="mi_cn_other1">Other ControlNet Model 1</string>
+    <string name="mi_cn_other2">Other ControlNet Model 2</string>
+    <string name="mi_cn_other3">Other ControlNet Model 3</string>
+    <string name="Customized_Mode">">Customized Mode"></string>
+    <string name="mi_mode_txt2img">SD txt2img</string>
+    <string name="mi_mode_sdxl">SDXL txt2img</string>
+    <string name="mi_mode_sdxl_turbo">SDXL turbo txt2img</string>
+    <string name="mi_mode_refiner">SDXL Refiner</string>
+    <string name="mi_mode_custom1">Custom Mode 1</string>
+    <string name="mi_mode_custom2">Custom Mode 2</string>
+    <string name="mi_mode_custom3">Custom Mode 3</string>
+    <string name="mi_mode_custom4">Custom Mode 4</string>
+    <string name="mi_mode_custom5">Custom Mode 5</string>
+    <string name="mi_mode_custom6">Custom Mode 6</string>
+    <string name="mi_mode_custom7">Custom Mode 7</string>
+    <string name="mi_mode_custom8">Custom Mode 8</string>
+    <string name="mi_mode_customaw">alwayson_scripts</string>
+    <string name="mi_about">Go to Project Page</string>
 
 
     <string-array name="sd_size_options">

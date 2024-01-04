@@ -1,60 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:title="SD Settings">
+    <item android:title="@string/SD_Settings">
         <menu>
-            <item android:id="@+id/mi_sd_server_address" android:title="A1111 SD-webui Address"/>
-            <item android:id="@+id/mi_sd_output_dim" android:title="Default SD Output Dimension"/>
-            <item android:id="@+id/mi_canvas_dim" android:title="Drawing Canvas Maximum Size"/>
-            <item android:id="@+id/mi_steps" android:title="Default Steps" />
-            <item android:id="@+id/mi_cfg_scale" android:title="Default CFG Scale" />
-            <item android:id="@+id/mi_sd_sampler" android:title="Default Sampling method"/>
-            <item android:id="@+id/mi_clip_skip" android:title="Clip skip" />
-            <item android:id="@+id/mi_sd_upscaler" android:title="Upscaler"/>
-            <item android:id="@+id/mi_sd_refresh_loras" android:title="Refresh Loras"/>
-            <item android:id="@+id/mi_sd_refresh_ckpt" android:title="Refresh Checkpoints"/>
+            <item android:id="@+id/mi_sd_server_address" android:title="@string/mi_sd_server_address"/>
+            <item android:id="@+id/mi_sd_output_dim" android:title="@string/mi_sd_output_dim"/>
+            <item android:id="@+id/mi_canvas_dim" android:title="@string/mi_canvas_dim"/>
+            <item android:id="@+id/mi_steps" android:title="@string/mi_steps" />
+            <item android:id="@+id/mi_cfg_scale" android:title="@string/mi_cfg_scale" />
+            <item android:id="@+id/mi_sd_sampler" android:title="@string/mi_sd_sampler"/>
+            <item android:id="@+id/mi_clip_skip" android:title="@string/mi_clip_skip" />
+            <item android:id="@+id/mi_sd_upscaler" android:title="@string/mi_sd_upscaler"/>
+            <item android:id="@+id/mi_sd_refresh_loras" android:title="@string/mi_sd_refresh_loras"/>
+            <item android:id="@+id/mi_sd_refresh_ckpt" android:title="@string/mi_sd_refresh_ckpt"/>
         </menu>
     </item>
-    <item android:title="Prompt Settings">
+    <item android:title="@string/Prompt_Settings">
         <menu>
-            <item android:id="@+id/mi_prompt_prefix" android:title="Prompt prefix"/>
-            <item android:id="@+id/mi_prompt_postfix" android:title="Prompt postfix"/>
-            <item android:id="@+id/mi_negative_prompt" android:title="Negative prompt"/>
-            <item android:id="@+id/mi_autocomplete_phrases" android:title="Auto-complete Phrases"/>
+            <item android:id="@+id/mi_prompt_prefix" android:title="@string/mi_prompt_prefix"/>
+            <item android:id="@+id/mi_prompt_postfix" android:title="@string/mi_prompt_postfix"/>
+            <item android:id="@+id/mi_negative_prompt" android:title="@string/mi_negative_prompt"/>
+            <item android:id="@+id/mi_autocomplete_phrases" android:title="@string/mi_autocomplete_phrases"/>
         </menu>
     </item>
-    <item android:title="Model Settings">
+    <item android:title="@string/Model_Settings">
         <menu>
-            <item android:id="@+id/mi_sd_model" android:title="SD 1.5 model"/>
-            <item android:id="@+id/mi_sd_inpaint_model" android:title="SD 1.5 inpaint model"/>
-            <item android:id="@+id/mi_sdxl_base_model" android:title="SDXL model"/>
-            <item android:id="@+id/mi_sdxl_turbo_model" android:title="SDXL Turbo model"/>
-            <item android:title="ControlNet models">
+            <item android:id="@+id/mi_sd_model" android:title="@string/mi_sd_model"/>
+            <item android:id="@+id/mi_sd_inpaint_model" android:title="@string/mi_sd_inpaint_model"/>
+            <item android:id="@+id/mi_sdxl_base_model" android:title="@string/mi_sdxl_base_model"/>
+            <item android:id="@+id/mi_sdxl_turbo_model" android:title="@string/mi_sdxl_turbo_model"/>
+            <item android:title="@string/ControlNet_models">
                 <menu>
-                    <item android:id="@+id/mi_cn_scribble" android:title="ControlNet Scribble model"/>
-                    <item android:id="@+id/mi_cn_depth" android:title="ControlNet Depth model"/>
-                    <item android:id="@+id/mi_cn_pose" android:title="ControlNet Pose model"/>
-                    <item android:id="@+id/mi_cn_canny" android:title="ControlNet Canny model"/>
-                    <item android:id="@+id/mi_cn_normal" android:title="ControlNet Normal model"/>
-                    <item android:id="@+id/mi_cn_mlsd" android:title="ControlNet MLSD model"/>
-                    <item android:id="@+id/mi_cn_lineart" android:title="ControlNet Lineart model"/>
-                    <item android:id="@+id/mi_cn_softedge" android:title="ControlNet Softedge model"/>
-                    <item android:id="@+id/mi_cn_seg" android:title="ControlNet Seg model"/>
-                    <item android:id="@+id/mi_cn_tile" android:title="ControlNet Tile model"/>
-                    <item android:id="@+id/mi_cn_ipadapter" android:title="ControlNet IP-Adapter model"/>
-                    <item android:id="@+id/mi_cnxl_ipadapter" android:title="ControlNet IP-Adapter XL model"/>
-                    <item android:id="@+id/mi_cn_other1" android:title="Other ControlNet Model 1"/>
-                    <item android:id="@+id/mi_cn_other2" android:title="Other ControlNet Model 2"/>
-                    <item android:id="@+id/mi_cn_other3" android:title="Other ControlNet Model 3"/>
+	            <item android:id="@+id/mi_cn_scribble" android:title="@string/mi_cn_scribble"/>
+	            <item android:id="@+id/mi_cn_depth" android:title="@string/mi_cn_depth"/>
+	            <item android:id="@+id/mi_cn_pose" android:title="@string/mi_cn_pose"/>
+	            <item android:id="@+id/mi_cn_canny" android:title="@string/mi_cn_canny"/>
+	            <item android:id="@+id/mi_cn_normal" android:title="@string/mi_cn_normal"/>
+	            <item android:id="@+id/mi_cn_mlsd" android:title="@string/mi_cn_mlsd"/>
+	            <item android:id="@+id/mi_cn_lineart" android:title="@string/mi_cn_lineart"/>
+	            <item android:id="@+id/mi_cn_softedge" android:title="@string/mi_cn_softedge"/>
+	            <item android:id="@+id/mi_cn_seg" android:title="@string/mi_cn_seg"/>
+	            <item android:id="@+id/mi_cn_tile" android:title="@string/mi_cn_tile"/>
+                    <item android:id="@+id/mi_cn_ipadapter" android:title="@string/mi_cn_ipadapter"/>
+                    <item android:id="@+id/mi_cnxl_ipadapter" android:title="@string/mi_cn_ipadapter"/>
+	            <item android:id="@+id/mi_cn_other1" android:title="@string/mi_cn_other1"/>
+	            <item android:id="@+id/mi_cn_other2" android:title="@string/mi_cn_other2"/>
+	            <item android:id="@+id/mi_cn_other3" android:title="@string/mi_cn_other3"/>
                 </menu>
             </item>
         </menu>
     </item>
-    <item android:title="Customized Mode">
+    <item android:title="@string/Customized_Mode">
         <menu>
-            <item android:id="@+id/mi_mode_txt2img" android:title="SD txt2img"/>
-            <item android:id="@+id/mi_mode_sdxl" android:title="SDXL txt2img"/>
-            <item android:id="@+id/mi_mode_sdxl_turbo" android:title="SDXL turbo txt2img"/>
+            <item android:id="@+id/mi_mode_txt2img" android:title="@string/mi_mode_txt2img"/>
+            <item android:id="@+id/mi_mode_sdxl" android:title="@string/mi_mode_sdxl"/>
+	    <item android:id="@+id/mi_mode_sdxl_turbo" android:title="@string/mi_mode_sdxl_turbo"/>
+            <item android:id="@+id/mi_mode_customaw" android:title="@string/mi_mode_customaw"/>
         </menu>
     </item>
-    <item android:id="@+id/mi_about" android:title="Go to Project Page" />
+    <item android:id="@+id/mi_about" android:title="@string/mi_about" />
 </menu>

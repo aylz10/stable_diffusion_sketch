@@ -1,0 +1,101 @@
+<resources>
+    <string name="app_name">SD修改版</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="add_paint">Add Paint</string>
+    <string name="title_activity_drawing">DrawingActivity</string>
+    <string name="undo">撤销(undo)</string>
+    <string name="redo">重做(redo)</string>
+    <string name="stroke_width">笔画宽度(Stroke Width)</string>
+    <string name="stroke_color">笔画颜色(Stroke Color)</string>
+    <string name="eraser">橡皮擦(Eraser)</string>
+    <string name="sdAction">开始扩散(Diffuse now)</string>
+    <string name="refImg">参考图片(Reference Image)</string>
+    <string name="super_resolution">超分辨率(Super Resolution)</string>
+    <string name="save_sketch">保存草图(Save Sketch)</string>
+    <string name="edit_result">编辑结果(Edit Result)</string>
+    <string name="delete_sketch">删除草图(Delete Sketch)</string>
+    <string name="go_back">返回(Go Back)</string>
+    <string name="ok">OK</string>
+    <string name="next">下一个(Next)</string>
+    <string name="cancel">取消(Cancel)</string>
+    <string name="configure">配置(Configure)</string>
+
+    <string name="draw">开始绘制</string>
+    <string name="add_from_camera">从相机添加</string>
+    <string name="add_from_image">从图像添加</string>
+    <string name="generate_image">生成图像</string>
+    <string name="or">or</string>
+    <string name="previous">上一个(previous)</string>
+    <string name="my_images">我的图片</string>
+    <string name="no_recent_immages">没有最近的图像</string>
+    <string name="app_not_configured_title">应用程序未配置</string>
+    <string name="app_not_configured_message">在使用该应用程序之前，您必须配置Automatic1111服务器地址。</string>
+
+    <string name="SD_Settings">SD 设置</string>
+    <string name="mi_sd_server_address">SD 服务器地址</string>
+    <string name="mi_sd_output_dim">SD 输出尺寸</string>
+    <string name="mi_canvas_dim">画布尺寸</string>
+    <string name="mi_steps">迭代步数(steps)</string>
+    <string name="mi_cfg_scale">提示词引导系数(CFG Scale)</string>
+    <string name="mi_sd_sampler">采样方法(Sampler)</string>
+    <string name="mi_clip_skip">Clip skip</string>
+    <string name="mi_sd_upscaler">放大算法(upscaler)</string>
+    <string name="mi_sd_refresh_loras">刷新Loras</string>
+    <string name="mi_sd_refresh_ckpt">刷新Checkpoints</string>
+    <string name="Prompt_Settings">提示词 设置</string>
+    <string name="mi_prompt_prefix">提示词 前缀(Prompt prefix)</string>
+    <string name="mi_prompt_postfix">提示词 后缀(Prompt postfix)</string>
+    <string name="mi_negative_prompt">负面提示词(Negative prompt)</string>
+    <string name="mi_autocomplete_phrases">自动完成短语</string>
+    <string name="Model_Settings">模型 设置</string>
+    <string name="mi_sd_model">SD 模型</string>
+    <string name="mi_sd_inpaint_model">SD 修复模型(inpaint)</string>
+    <string name="mi_sdxl_turbo_model">SDXL Turbo 模型</string>
+    <string name="mi_sdxl_base_model">SDXL Base 模型</string>
+    <string name="mi_sdxl_refine_model">SDXL Refiner 模型</string>
+    <string name="ControlNet_models">">ControlNet Models"></string>
+    <string name="mi_cn_scribble">ControlNet Scribble 模型</string>
+    <string name="mi_cn_depth">ControlNet Depth 模型</string>
+    <string name="mi_cn_pose">ControlNet Pose 模型</string>
+    <string name="mi_cn_canny">ControlNet Canny 模型</string>
+    <string name="mi_cn_normal">ControlNet Normal 模型</string>
+    <string name="mi_cn_mlsd">ControlNet MLSD 模型</string>
+    <string name="mi_cn_lineart">ControlNet Lineart 模型</string>
+    <string name="mi_cn_softedge">ControlNet Softedge 模型</string>
+    <string name="mi_cn_seg">ControlNet Seg 模型</string>
+    <string name="mi_cn_tile">ControlNet Tile 模型</string>
+    <string name="mi_cn_ipadapter">ControlNet IP-Adapter 模型</string>
+    <string name="mi_cnxl_ipadapter">ControlNet IP-Adapter XL 模型</string>
+    <string name="mi_cn_other1">其他 ControlNet 模型 1</string>
+    <string name="mi_cn_other2">其他 ControlNet 模型 2</string>
+    <string name="mi_cn_other3">其他 ControlNet 模型 3</string>
+    <string name="Customized_Mode">自定义 模式</string>
+    <string name="mi_mode_txt2img">SD 文生图</string>
+    <string name="mi_mode_sdxl">SDXL 文生图</string>
+    <string name="mi_mode_sdxl_turbo">SDXL turbo 文生图</string>
+    <string name="mi_mode_refiner">SDXL Refiner</string>
+    <string name="mi_mode_custom1">自定义 模式 1</string>
+    <string name="mi_mode_custom2">自定义 模式 2</string>
+    <string name="mi_mode_custom3">自定义 模式 3</string>
+    <string name="mi_mode_custom4">自定义 模式 4</string>
+    <string name="mi_mode_custom5">自定义 模式 5</string>
+    <string name="mi_mode_custom6">自定义 模式 6</string>
+    <string name="mi_mode_custom7">自定义 模式 7</string>
+    <string name="mi_mode_custom8">自定义 模式 8</string>
+    <string name="mi_mode_customaw">alwayson_scripts</string>
+    <string name="mi_about">前往项目页面</string>
+
+
+    <string-array name="sd_size_options">
+        <item>512px</item>
+        <item>768px</item>
+        <item>1024px</item>
+        <item>1280px</item>
+    </string-array>
+    <string-array name="sd_aspect_options">
+        <item>1:1 (square)</item>
+        <item>3:4 (portrait)</item>
+        <item>4:3 (landscape)</item>
+        <item>16:9 (wide landscape)</item>
+    </string-array>
+</resources>

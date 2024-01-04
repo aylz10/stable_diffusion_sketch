@@ -245,6 +245,21 @@ public class SdApiHelper {
     public JSONObject getControlnetTxt2imgJSON(SdParam param, Sketch mCurrentSketch) {
         JSONObject jsonObject = new JSONObject();
         try {
+            boolean hr = param.hr;
+            if (hr) {
+                jsonObject.put("enable_hr", hr);
+                jsonObject.put("hr_upscaler", this.sharedPreferences.getString("sdUpscaler", "R-ESRGAN 4x+"));
+                jsonObject.put("hr_scale", param.hrs);
+                jsonObject.put("denoising_strength", param.denoise);
+            }
+            String asapi = param.asapi;
+            if (asapi == null) {
+                asapi = this.sharedPreferences.getString("modeCustomaw", "{}");
+                if (asapi.equals("")) {
+                    asapi = "{}";
+                }
+            }
+            jsonObject.put("alwayson_scripts", new JSONObject(asapi));
             jsonObject.put("prompt", sharedPreferences.getString("promptPrefix", "") + " " + mCurrentSketch.getPrompt() + ", " + sharedPreferences.getString("promptPostfix", ""));
             jsonObject.put("seed", -1);
             jsonObject.put("batch_size", 1);
@@ -307,6 +322,7 @@ public class SdApiHelper {
                     }
                 }
                 controlnet.put("args", args);
+                alwayson_scripts = new JSONObject(jsonObject.getJSONObject("alwayson_scripts").toString());
                 alwayson_scripts.put("controlnet", controlnet);
                 jsonObject.put("alwayson_scripts", alwayson_scripts);
             }
@@ -366,6 +382,14 @@ public class SdApiHelper {
                 //jsonObject.put("inpainting_mask_invert", 0);
                 jsonObject.put("initial_noise_multiplier", 1);
             }
+            String asapi = param.asapi;
+            if (asapi == null) {
+                asapi = this.sharedPreferences.getString("modeCustomaw", "{}");
+                if (asapi.equals("")) {
+                    asapi = "{}";
+                }
+            }
+            jsonObject.put("alwayson_scripts", new JSONObject(asapi));
             jsonObject.put("prompt", sharedPreferences.getString("promptPrefix", "") + " " + mCurrentSketch.getPrompt() + ", " + sharedPreferences.getString("promptPostfix", ""));
             jsonObject.put("seed", -1);
             jsonObject.put("batch_size", 1);
@@ -458,6 +482,7 @@ public class SdApiHelper {
                 }
                 controlnet.put("args", args);
                 alwayson_scripts.put("controlnet", controlnet);
+                alwayson_scripts = new JSONObject(jsonObject.getJSONObject("alwayson_scripts").toString());
                 jsonObject.put("alwayson_scripts", alwayson_scripts);
             }
         } catch (JSONException e) {
