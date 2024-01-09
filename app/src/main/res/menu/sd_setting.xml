@@ -9,7 +9,8 @@
             <item android:id="@+id/mi_cfg_scale" android:title="@string/mi_cfg_scale" />
             <item android:id="@+id/mi_sd_sampler" android:title="@string/mi_sd_sampler"/>
             <item android:id="@+id/mi_clip_skip" android:title="@string/mi_clip_skip" />
-            <item android:id="@+id/mi_sd_upscaler" android:title="@string/mi_sd_upscaler"/>
+            <item android:id="@+id/mi_upscaler" android:title="Upscaler"/>
+            <item android:id="@+id/mi_upscaler_gfpgan" android:title="GFPGAN Visibility"/>
             <item android:id="@+id/mi_sd_refresh_loras" android:title="@string/mi_sd_refresh_loras"/>
             <item android:id="@+id/mi_sd_refresh_ckpt" android:title="@string/mi_sd_refresh_ckpt"/>
         </menu>

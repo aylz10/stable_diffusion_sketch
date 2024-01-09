@@ -13,8 +13,10 @@ import androidx.annotation.NonNull;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.jsoft.diffusionpaint.DrawingActivity;
 import com.jsoft.diffusionpaint.dto.CnParam;
 import com.jsoft.diffusionpaint.dto.SdParam;
+import com.jsoft.diffusionpaint.dto.SdStyle;
 import com.jsoft.diffusionpaint.dto.Sketch;
 
 import org.json.JSONArray;
@@ -100,12 +102,13 @@ public class SdApiHelper {
                 try (ResponseBody responseBody = response.body()) {
                     if (!response.isSuccessful()) {
                         activity.runOnUiThread(() -> listener.onSdApiFailure(requestType, "Response Code: " + response.code()));
+                        return;
                     }
 
-                    Headers responseHeaders = response.headers();
+                    /*Headers responseHeaders = response.headers();
                     for (int i = 0, size = responseHeaders.size(); i < size; i++) {
                         Log.d("diffusionPaint", responseHeaders.name(i) + ": " + responseHeaders.value(i));
-                    }
+                    }*/
 
                     assert responseBody != null;
                     String responseString = responseBody.string();
@@ -130,7 +133,9 @@ public class SdApiHelper {
         try {
             jsonObject.put("resize_mode", 0);
             //jsonObject.put("show_extras_results", true);
-            jsonObject.put("gfpgan_visibility", 0.8);
+            double gfpganVisibity = 0.8;
+            try {gfpganVisibity = Double.parseDouble(sharedPreferences.getString("upscalerGFPGAN", "0.8")); } catch (Exception ignored) {}
+            jsonObject.put("gfpgan_visibility", gfpganVisibity);
             jsonObject.put("codeformer_visibility", 0);
             jsonObject.put("codeformer_weight", 0);
             jsonObject.put("upscaling_resize", scale);
@@ -242,6 +247,40 @@ public class SdApiHelper {
         return param;
     }
 
+    private String getPrompt(Sketch mCurrentSketch) {
+        String prompt = mCurrentSketch.getPrompt();
+        if (mCurrentSketch.getStyle() != null && DrawingActivity.styleList != null) {
+            for (int i=0; i < DrawingActivity.styleList.size();i++) {
+                if (mCurrentSketch.getStyle().equals(DrawingActivity.styleList.get(i).name)) {
+                    if (DrawingActivity.styleList.get(i).prompt.contains("{prompt}")) {
+                        prompt = DrawingActivity.styleList.get(i).prompt.replace("{prompt}", mCurrentSketch.getPrompt());
+                    } else {
+                        prompt = DrawingActivity.styleList.get(i).prompt + ", " + mCurrentSketch.getPrompt();
+                    }
+                    break;
+                }
+            }
+        }
+        return sharedPreferences.getString("promptPrefix", "") + " " + prompt + ", " + sharedPreferences.getString("promptPostfix", "");
+    }
+
+    private String getNegPrompt(Sketch mCurrentSketch) {
+        String prompt = mCurrentSketch.getNegPrompt();
+        if (mCurrentSketch.getStyle() != null && DrawingActivity.styleList != null) {
+            for (int i=0; i < DrawingActivity.styleList.size();i++) {
+                if (mCurrentSketch.getStyle().equals(DrawingActivity.styleList.get(i).name)) {
+                    if (DrawingActivity.styleList.get(i).negPrompt.contains("{prompt}")) {
+                        prompt = DrawingActivity.styleList.get(i).negPrompt.replace("{prompt}", mCurrentSketch.getNegPrompt());
+                    } else {
+                        prompt = DrawingActivity.styleList.get(i).negPrompt + ", " + mCurrentSketch.getNegPrompt();
+                    }
+                    break;
+                }
+            }
+        }
+        return sharedPreferences.getString("negativePrompt", "") + ", " + prompt;
+    }
+
     public JSONObject getControlnetTxt2imgJSON(SdParam param, Sketch mCurrentSketch) {
         JSONObject jsonObject = new JSONObject();
         try {
@@ -260,7 +299,7 @@ public class SdApiHelper {
                 }
             }
             jsonObject.put("alwayson_scripts", new JSONObject(asapi));
-            jsonObject.put("prompt", sharedPreferences.getString("promptPrefix", "") + " " + mCurrentSketch.getPrompt() + ", " + sharedPreferences.getString("promptPostfix", ""));
+            jsonObject.put("prompt", getPrompt(mCurrentSketch));
             jsonObject.put("seed", -1);
             jsonObject.put("batch_size", 1);
             jsonObject.put("n_iter", 1);
@@ -282,7 +321,7 @@ public class SdApiHelper {
             jsonObject.put("tiling", false);
             jsonObject.put("do_not_save_samples", true);
             jsonObject.put("do_not_save_grid", true);
-            jsonObject.put("negative_prompt", sharedPreferences.getString("negativePrompt", "") + ", " + mCurrentSketch.getNegPrompt());
+            jsonObject.put("negative_prompt", getNegPrompt(mCurrentSketch));
             jsonObject.put("sampler_name", param.sampler);
             jsonObject.put("save_images", false);
 
@@ -390,7 +429,7 @@ public class SdApiHelper {
                 }
             }
             jsonObject.put("alwayson_scripts", new JSONObject(asapi));
-            jsonObject.put("prompt", sharedPreferences.getString("promptPrefix", "") + " " + mCurrentSketch.getPrompt() + ", " + sharedPreferences.getString("promptPostfix", ""));
+            jsonObject.put("prompt", getPrompt(mCurrentSketch));
             jsonObject.put("seed", -1);
             jsonObject.put("batch_size", 1);
             jsonObject.put("n_iter", 1);
@@ -424,7 +463,7 @@ public class SdApiHelper {
             jsonObject.put("tiling", false);
             jsonObject.put("do_not_save_samples", true);
             jsonObject.put("do_not_save_grid", true);
-            jsonObject.put("negative_prompt", sharedPreferences.getString("negativePrompt", "") + ", " + mCurrentSketch.getNegPrompt());
+            jsonObject.put("negative_prompt", getNegPrompt(mCurrentSketch));
             jsonObject.put("steps", param.steps);
             jsonObject.put("sampler_name", param.sampler);
             jsonObject.put("save_images", false);
@@ -515,6 +554,40 @@ public class SdApiHelper {
                 loraList.add("<lora:" + loraArray.getJSONObject(i).getString("name") + ":0.5>");
             }
             return loraList;
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public List<SdStyle> getStyles(String responseBody) {
+        try {
+            JSONArray styleArray = new JSONArray(responseBody);
+
+            List<JSONObject> jsonList = new ArrayList<>();
+            for (int i = 0; i < styleArray.length(); i++) {
+                try {
+                    jsonList.add(styleArray.getJSONObject(i));
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            jsonList.sort((jsonObject1, jsonObject2) -> {
+                String name1 = jsonObject1.optString("name");
+                String name2 = jsonObject2.optString("name");
+                return name1.compareToIgnoreCase(name2);
+            });
+            styleArray = new JSONArray(jsonList);
+
+            List<SdStyle> styleList = new ArrayList<>();
+            for (int i = 0; i < styleArray.length(); i++) {
+                SdStyle style = new SdStyle();
+                style.name = styleArray.getJSONObject(i).getString("name");
+                style.prompt = styleArray.getJSONObject(i).getString("prompt");
+                style.negPrompt = styleArray.getJSONObject(i).getString("negative_prompt");
+                styleList.add(style);
+            }
+            return styleList;
         } catch (JSONException e) {
             e.printStackTrace();
         }
