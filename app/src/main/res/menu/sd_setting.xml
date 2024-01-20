@@ -29,6 +29,7 @@
             <item android:id="@+id/mi_sd_inpaint_model" android:title="@string/mi_sd_inpaint_model"/>
             <item android:id="@+id/mi_sdxl_base_model" android:title="@string/mi_sdxl_base_model"/>
             <item android:id="@+id/mi_sdxl_turbo_model" android:title="@string/mi_sdxl_turbo_model"/>
+            <item android:id="@+id/mi_sdxl_inpaint_model" android:title="SDXL Inpaint model"/>
             <item android:title="@string/ControlNet_models">
                 <menu>
 	            <item android:id="@+id/mi_cn_scribble" android:title="@string/mi_cn_scribble"/>
